@@ -1,4 +1,7 @@
 package pfe.example.demo.Service;
 
-public class Voteservice {
+public class VoteService {
+
+
+
 }
