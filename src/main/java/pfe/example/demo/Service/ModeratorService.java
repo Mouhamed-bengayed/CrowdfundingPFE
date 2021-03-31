@@ -6,6 +6,7 @@ import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class ModeratorService {
@@ -21,6 +22,8 @@ public class ModeratorService {
     ListBlackRepository listBlackRepository;
     @Autowired
     ContributorRepository contributorRepository;
+    @Autowired
+    AccountRepository accountRepository;
 
     public void blockedPorter(Long id) {
         Porter porter = (Porter) porterRepository.findAllById(id);
@@ -32,15 +35,16 @@ public class ModeratorService {
     public void blockedContributor(Long id) {
         Contributor contributor = contributorRepository.getOne(id);
         ListBlack listBlack = new ListBlack();
-      //  listBlack.setPorter((Collection<Contributor>) contributor);
+       listBlack.setContributors((Collection<Contributor>) contributor);
         listBlackRepository.save(listBlack);
 
     }
 
     public void activatePorter(Long id) {
-      //  Porter porter= (Porter) listBlackRepository.findById(id);
-       // projectRepository.save(porter);
-       // listBlackRepository.deleteById(id);
+        Porter porter = (Porter) porterRepository.findAllById(id);
+        ListBlack listBlack =listBlackRepository.findByPorteur(porter);
+        this.listBlackRepository.delete(listBlack);
+
     }
 
     public void activerContibuteur(Long id) {
@@ -49,9 +53,14 @@ public class ModeratorService {
         listBlackRepository.deleteById(id);
     }
 
-   // public Boolean validInscription() {
-
-   // }
+    public void validInscription(Long id) {
+        Optional<Account> account=accountRepository.findById(id);
+        if(account.isPresent()) {
+            Account account1=account.get();
+            account1.setValid(true);
+            this.accountRepository.save(account1);
+        }
+    }
 
 }
 

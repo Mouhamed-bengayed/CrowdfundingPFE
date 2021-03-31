@@ -21,5 +21,4 @@ public class ReplyCommentController {
     @GetMapping("/ListReplyComment")
     public List<ReplyComment> getAllReplyComment(){ return replyCommentService.getAllReplyComment();}
 
-
 }

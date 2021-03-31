@@ -18,6 +18,6 @@ public class Account implements Serializable {
     private Date datedecreation;
     @ManyToOne
     private Utilisateur utilisateur;
-
+    private boolean isValid;
 
 }

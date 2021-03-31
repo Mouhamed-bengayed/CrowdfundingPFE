@@ -17,7 +17,6 @@ public class CategoryController {
     public List<Category> ListCategory() {
         return categoryService.getAllCategories();
     }
-
     @DeleteMapping("/deleteCategory")
     public void deleteCategory(Long c1) {
         categoryService.deleteCategory(c1);
