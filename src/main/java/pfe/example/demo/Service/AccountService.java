@@ -11,6 +11,7 @@ import pfe.example.demo.Entites.Account;
 import pfe.example.demo.Entites.Comment;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountService {
@@ -28,8 +29,6 @@ public class AccountService {
    return   accountRepository.save(a1);
     }
 
-
-
     public Account  getAccountById(Long id){
       return accountRepository.findById(id).orElseThrow();
     }
@@ -38,6 +37,14 @@ public class AccountService {
        Account account=getAccountById(id);
        accountRepository.delete(account);
        return ResponseEntity.ok().build();
+    }
+    public void validInscription(Long id) {
+        Optional<Account> account=accountRepository.findById(id);
+        if(account.isPresent()) {
+            Account account1=account.get();
+            account1.setValid(true);
+            this.accountRepository.save(account1);
+        }
     }
 
 }
