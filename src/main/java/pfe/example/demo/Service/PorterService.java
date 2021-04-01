@@ -12,9 +12,9 @@ import java.util.Collection;
 @Service
 public class PorterService {
 @Autowired
-    PorterRepository porterRepository;
+PorterRepository porterRepository;
 @Autowired
-    ListBlackRepository listBlackRepository;
+ListBlackRepository listBlackRepository;
 
     public void blockedPorter(Long id) {
         Porter porter = (Porter) porterRepository.findAllById(id);
@@ -29,4 +29,5 @@ public class PorterService {
         this.listBlackRepository.delete(listBlack);
 
     }
+
 }
