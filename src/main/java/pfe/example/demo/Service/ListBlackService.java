@@ -7,7 +7,13 @@ import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.Moderator;
 import pfe.example.demo.Entites.Porter;
 
+import java.util.List;
+
 @Service
 public class ListBlackService {
-
+@Autowired
+ListBlackRepository listBlackRepository;
+  //  public List<Porter> gelAllPorter(){
+     //   return listBlackRepository.findAll().
+   // }
 }

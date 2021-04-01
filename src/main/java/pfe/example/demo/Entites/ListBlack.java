@@ -20,7 +20,7 @@ public class ListBlack {
     private Collection<Porter> porter;
     @OneToMany(mappedBy = "listBlack")
     @JsonIgnoreProperties("listBlack")
-    private Collection<Contributor> contributors;
+    private Collection<Contributor> contributor;
 
 
 }

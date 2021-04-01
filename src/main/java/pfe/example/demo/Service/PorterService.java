@@ -16,8 +16,8 @@ PorterRepository porterRepository;
 @Autowired
 ListBlackRepository listBlackRepository;
 
-    public void blockedPorter(Long id) {
-        Porter porter = (Porter) porterRepository.findAllById(id);
+   public void blockedPorter(Long id) {
+       Porter porter = (Porter) porterRepository.findAllById(id);
         ListBlack listBlack = new ListBlack();
         listBlack.setPorter((Collection<Porter>) porter);
         listBlackRepository.save(listBlack);
