@@ -12,7 +12,6 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
-
     @GetMapping("/listCategories")
     public List<Category> ListCategory() {
         return categoryService.getAllCategories();
@@ -21,7 +20,6 @@ public class CategoryController {
     public void deleteCategory(Long c1) {
         categoryService.deleteCategory(c1);
     }
-
     @PostMapping("/addCategory")
     public Category addCategory(Category c1){
       return   categoryService.addCategory(c1);

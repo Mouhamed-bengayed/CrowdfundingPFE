@@ -25,7 +25,7 @@ public class AccountService {
 
     public Account addAccount(Account a1){
         a1.setValid(false);
-        accountRepository.findByEmail(a1.getEmail());
+
    return   accountRepository.save(a1);
     }
 
