@@ -21,7 +21,6 @@ public class CategoryController {
     public void deleteCategory(@RequestBody @Valid Long c1) {
         categoryService.deleteCategory(c1);
     }
-
     @PostMapping("/addCategory")
     public Category addCategory(@RequestBody @Valid Category c1){
       return   categoryService.addCategory(c1);
