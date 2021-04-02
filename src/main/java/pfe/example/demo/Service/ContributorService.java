@@ -7,8 +7,7 @@ import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.*;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+
 
 @Service
 public class ContributorService {

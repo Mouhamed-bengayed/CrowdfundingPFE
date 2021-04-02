@@ -25,5 +25,4 @@ public class CategoryController {
     public Category addCategory(@RequestBody @Valid Category c1){
       return   categoryService.addCategory(c1);
     }
-
 }

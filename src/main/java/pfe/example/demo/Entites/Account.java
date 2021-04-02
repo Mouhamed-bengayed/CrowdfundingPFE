@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 @Data
 public class Account implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)

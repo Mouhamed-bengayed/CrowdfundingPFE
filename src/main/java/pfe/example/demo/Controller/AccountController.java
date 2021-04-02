@@ -8,7 +8,7 @@ import pfe.example.demo.Service.AccountService;
 import javax.validation.Valid;
 import java.util.List;
 
-@RequestMapping("/api/account")
+@RequestMapping("/api")
 @RestController
 public class AccountController {
     @Autowired
@@ -18,7 +18,6 @@ public class AccountController {
     public List<Account> ListAccount() {
         return accountService.getAllAccount();
     }
-
     @DeleteMapping("/deleteAccount")
     public void deleteAccount(@RequestBody @Valid Long c1) {
         accountService.deleteAccount(c1);
