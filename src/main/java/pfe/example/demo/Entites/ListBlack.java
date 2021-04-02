@@ -3,9 +3,7 @@ package pfe.example.demo.Entites;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -15,10 +13,10 @@ public class ListBlack {
     private Long id;
     private String nom;
 
-    @OneToMany(mappedBy = "listBlack")
+    @OneToMany(fetch = FetchType.LAZY , cascade= CascadeType.ALL,mappedBy = "listBlack")
     @JsonIgnoreProperties("listBlack")
     private Collection<Porter> porter;
-    @OneToMany(mappedBy = "listBlack")
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "listBlack")
     @JsonIgnoreProperties("listBlack")
     private Collection<Contributor> contributor;
 

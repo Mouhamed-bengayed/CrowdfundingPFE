@@ -12,7 +12,7 @@ import java.util.List;
 public class Porter extends Utilisateur {
     @ManyToOne
     private ListBlack listBlack;
-    @OneToMany(mappedBy = "porter")
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "porter")
     @JsonIgnoreProperties("porter")
     private List<Project> project;
 }

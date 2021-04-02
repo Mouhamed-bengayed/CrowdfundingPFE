@@ -27,7 +27,7 @@ public class Project implements Serializable {
     @ManyToOne
     private Porter porter;
     @JsonIgnoreProperties("comment")
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "comment")
     private Collection<Comment> comments;
 
 }

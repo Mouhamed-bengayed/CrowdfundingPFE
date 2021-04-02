@@ -19,7 +19,7 @@ public abstract class Utilisateur implements Serializable {
     private String prenom;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "utilisateur")
     @JsonIgnoreProperties("utilisateur")
     private Collection<Account> accountRepositories;
     public Utilisateur() {
