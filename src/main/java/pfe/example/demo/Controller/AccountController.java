@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pfe.example.demo.Entites.Account;
 import pfe.example.demo.Service.AccountService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/api/account")
@@ -19,11 +20,11 @@ public class AccountController {
     }
 
     @DeleteMapping("/deleteAccount")
-    public void deleteAccount(Long c1) {
+    public void deleteAccount(@RequestBody @Valid Long c1) {
         accountService.deleteAccount(c1);
     }
     @PostMapping("/addAccount")
-    public Account addAccount(Account A1){
+    public Account addAccount(@RequestBody @Valid Account A1){
         return  accountService.addAccount(A1);
     }
 

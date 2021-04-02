@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pfe.example.demo.Entites.Project;
 import pfe.example.demo.Service.ProjectService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -30,7 +31,7 @@ public class ProjectController {
     }
 
     @GetMapping("/getProjectByNom")
-    public Project getProjectByNom(String nom) {
+    public Project getProjectByNom(@RequestBody @Valid String nom) {
         return projectService.getProjectByNom(nom);
     }
 }

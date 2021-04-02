@@ -6,6 +6,7 @@ import pfe.example.demo.Entites.Comment;
 
 import pfe.example.demo.Service.CommentService;
 
+import javax.validation.Valid;
 import java.util.List;
 @RequestMapping("/api")
 @RestController
@@ -14,11 +15,11 @@ public class CommentController {
     CommentService commentService;
 
     @DeleteMapping("deleteComment")
-    public void deleteComment(Long id){
+    public void deleteComment(@RequestBody @Valid Long id){
         commentService.deleteComment(id);
     }
     @PostMapping("/addComment")
-    public Comment addComment(Comment p1){
+    public Comment addComment(@RequestBody @Valid Comment p1){
         return commentService.addComment(p1);
     }
     @GetMapping("ListProject")
