@@ -17,7 +17,7 @@ public class ReplyCommentController {
     ReplyCommentService replyCommentService;
 
     @DeleteMapping("/deleteReplyComment")
-    public void deleteReplyComment(@RequestBody @Valid Long id){ replyCommentService.deleteReplyComment(id); }
+    public void deleteReplyComment(@PathVariable("idReplyComment") Long idReplyComment){ replyCommentService.deleteReplyComment(idReplyComment); }
     @PostMapping("/addReplyComment")
     public ReplyComment addReplyComment(@RequestBody @Valid ReplyComment p1){ return replyCommentService.addReplyComment(p1); }
     @GetMapping("/ListReplyComment")

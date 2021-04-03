@@ -11,9 +11,5 @@ import java.util.List;
 
 @Service
 public class ListBlackService {
-@Autowired
-ListBlackRepository listBlackRepository;
-  //  public List<Porter> gelAllPorter(){
-     //   return listBlackRepository.findAll().
-   // }
+
 }

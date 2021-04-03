@@ -8,21 +8,21 @@ import pfe.example.demo.Service.CommentService;
 
 import javax.validation.Valid;
 import java.util.List;
-@RequestMapping("/api")
+@RequestMapping("/api/comment")
 @RestController
 public class CommentController {
     @Autowired
     CommentService commentService;
 
-    @DeleteMapping("deleteComment")
-    public void deleteComment(@RequestBody @Valid Long id){
-        commentService.deleteComment(id);
+    @DeleteMapping("delete-comment")
+    public void deleteComment(@PathVariable("idComment") Long idComment){
+        commentService.deleteComment(idComment);
     }
-    @PostMapping("/addComment")
+    @PostMapping("/add-comment")
     public Comment addComment(@RequestBody @Valid Comment p1){
         return commentService.addComment(p1);
     }
-    @GetMapping("ListProject")
+    @GetMapping("List-project")
     public List<Comment> getAllComment(){
         return commentService.getAllComment();
     }

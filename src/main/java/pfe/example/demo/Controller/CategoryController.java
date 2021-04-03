@@ -9,19 +9,20 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/category")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
-    @GetMapping("/listCategories")
+    @GetMapping("/list-categories")
+
     public List<Category> ListCategory() {
         return categoryService.getAllCategories();
     }
-    @DeleteMapping("/deleteCategory")
-    public void deleteCategory(@RequestBody @Valid Long c1) {
-        categoryService.deleteCategory(c1);
+    @DeleteMapping("/delete-category/{idCategory}")
+    public void deleteCategory(@PathVariable("idCategory") Long idCategory) {
+        categoryService.deleteCategory(idCategory);
     }
-    @PostMapping("/addCategory")
+    @PostMapping("/add-category")
     public Category addCategory(@RequestBody @Valid Category c1){
       return   categoryService.addCategory(c1);
     }

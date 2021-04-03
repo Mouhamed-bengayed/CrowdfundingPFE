@@ -1,13 +1,12 @@
 package pfe.example.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pfe.example.demo.Dao.CommentRepository;
-import pfe.example.demo.Entites.Account;
 import pfe.example.demo.Entites.Comment;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -19,13 +18,13 @@ public class CommentService {
 
     public Comment addComment(Comment c1) {return commentRepository.save(c1); }
 
-    public Comment getCommentById(Long id){
-        return commentRepository.findById(id).orElseThrow();
-    }
 
-    public ResponseEntity<?> deleteComment(Long id){
-        Comment comment=getCommentById(id);
-        commentRepository.delete(comment);
-        return ResponseEntity.ok().build();
+    public Comment deleteComment(Long id){
+        Optional<Comment> comment = commentRepository.findById(id);
+        if(comment.isPresent()){
+            return comment.get();
+        }else {
+            return null;
+        }
     }
-}
+    }

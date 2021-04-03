@@ -9,28 +9,28 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/project")
 public class ProjectController {
 
 @Autowired
     ProjectService projectService;
 
-    @DeleteMapping("/deleteProject")
-    public void deleteProject(Long id) {
-        projectService.deleteProject(id);
+    @DeleteMapping("/delete-project")
+    public void deleteProject(@PathVariable("id-project") Long idProject) {
+        projectService.deleteProject(idProject);
     }
 
-    @PostMapping("/addProject")
+    @PostMapping("/add-project")
     public Project addProject(@RequestBody @Valid Project p1) {
        return projectService.addProject(p1);
     }
 
-    @GetMapping("/getAllProject")
+    @GetMapping("/get-AllProject")
     public List<Project> getAllProject() {
         return projectService.getAllProject();
     }
 
-    @GetMapping("/getProjectByNom")
+    @GetMapping("/get-project-ByNom")
     public Project getProjectByNom(@RequestBody @Valid String nom) {
         return projectService.getProjectByNom(nom);
     }

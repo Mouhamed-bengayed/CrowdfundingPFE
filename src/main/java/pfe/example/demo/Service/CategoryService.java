@@ -9,6 +9,7 @@ import pfe.example.demo.Dao.CategoryRepository;
 import pfe.example.demo.Entites.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -27,13 +28,17 @@ public class CategoryService {
 
 
     public Category getCategoryById(Long id) {
-        return categoryRepository.findById(id).orElseThrow();
+        Optional<Category> category = categoryRepository.findById(id);
+        if(category.isPresent()){
+            return category.get();
+        }else {
+            return null;
+        }
     }
 
-    public ResponseEntity<?> deleteCategory(Long id) {
+    public void deleteCategory(Long id) {
         Category category = getCategoryById(id);
         categoryRepository.delete(category);
-        return ResponseEntity.ok().build();
     }
 
 
