@@ -30,8 +30,8 @@ public class ProjectController {
         return projectService.getAllProject();
     }
 
-    @GetMapping("/get-project-ByNom")
-    public Project getProjectByNom(@RequestBody @Valid String nom) {
-        return projectService.getProjectByNom(nom);
+    @GetMapping("/get-project-ByNom/{idNom}")
+    public Project getProjectByNom(@PathVariable("idNom") String idNom) {
+        return projectService.getProjectByNom(idNom);
     }
 }
