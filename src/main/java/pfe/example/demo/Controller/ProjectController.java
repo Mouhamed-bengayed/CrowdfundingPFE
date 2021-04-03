@@ -15,8 +15,8 @@ public class ProjectController {
 @Autowired
     ProjectService projectService;
 
-    @DeleteMapping("/delete-project")
-    public void deleteProject(@PathVariable("id-project") Long idProject) {
+    @DeleteMapping("/delete-project/{idProject}")
+    public void deleteProject(@PathVariable("idProject") Long idProject) {
         projectService.deleteProject(idProject);
     }
 

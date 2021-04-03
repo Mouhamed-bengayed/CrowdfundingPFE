@@ -17,7 +17,7 @@ public class AccountController {
     public List<Account> ListAccount() {
         return accountService.getAllAccount();
     }
-    @DeleteMapping("/delete-account")
+    @DeleteMapping("/delete-account/{idAccount}")
     public void deleteAccount(@PathVariable("idAccount") Long idAccount) {
         accountService.deleteAccount(idAccount);
     }

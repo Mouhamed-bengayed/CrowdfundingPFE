@@ -14,7 +14,7 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
-    @DeleteMapping("delete-comment")
+    @DeleteMapping("delete-comment/{idComment}")
     public void deleteComment(@PathVariable("idComment") Long idComment){
         commentService.deleteComment(idComment);
     }
