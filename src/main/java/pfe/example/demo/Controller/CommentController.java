@@ -22,7 +22,7 @@ public class CommentController {
     public Comment addComment(@RequestBody @Valid Comment p1){
         return commentService.addComment(p1);
     }
-    @GetMapping("List-project")
+    @GetMapping("List-comment")
     public List<Comment> getAllComment(){
         return commentService.getAllComment();
     }
