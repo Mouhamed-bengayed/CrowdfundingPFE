@@ -14,16 +14,14 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
     @GetMapping("/list-categories")
-
     public List<Category> ListCategory() {
         return categoryService.getAllCategories();
     }
     @DeleteMapping("/delete-category/{idCategory}")
-    public void deleteCategory(@PathVariable("idCategory") Long idCategory) {
-        categoryService.deleteCategory(idCategory);
-    }
+    public void deleteCategory(@PathVariable("idCategory") Long idCategory) { categoryService.deleteCategory(idCategory); }
     @PostMapping("/add-category")
     public Category addCategory(@RequestBody @Valid Category c1){
       return   categoryService.addCategory(c1);
     }
+
 }

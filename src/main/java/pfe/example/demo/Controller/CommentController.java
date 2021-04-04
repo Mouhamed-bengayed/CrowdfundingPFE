@@ -23,10 +23,6 @@ public class CommentController {
         return commentService.addComment(p1);
     }
     @GetMapping("List-comment")
-    public List<Comment> getAllComment(){
-        return commentService.getAllComment();
-    }
-
-
+    public List<Comment> getAllComment(){ return commentService.getAllComment();}
 
 }
