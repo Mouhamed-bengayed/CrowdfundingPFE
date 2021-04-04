@@ -12,9 +12,11 @@ import java.util.Date;
 public class Account implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nom;
+    private String prenom;
     private String email;
     private String password;
-    private Date datedecreation;
+    private String CPassword;
     @ManyToOne
     private Utilisateur utilisateur;
     private boolean isValid;

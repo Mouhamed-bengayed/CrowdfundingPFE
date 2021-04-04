@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,6 @@ public class Category implements Serializable {
     private String nom;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL ,mappedBy = "category")
     @JsonIgnoreProperties("category")
-    private Set<Project> project=new HashSet<>();
+    private Collection<Project> project;
 
 }

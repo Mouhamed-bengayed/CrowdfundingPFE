@@ -16,7 +16,7 @@ public class Comment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date dateComment;
-    private String comment;
+    private String commenter;
     @ManyToOne
     private Contributor contributor;
     @ManyToOne

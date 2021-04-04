@@ -19,15 +19,15 @@ public class Project implements Serializable {
     private Date dateDecreation;
     @ManyToOne
     private Category category;
-    @OneToMany(mappedBy = "project")
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
     private Collection<Vote> votes;
-    @OneToMany(mappedBy = "project")
+    @OneToMany( fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
     @JsonIgnoreProperties("project")
     private List<Contribution> contribution;
     @ManyToOne
     private Porter porter;
-    @JsonIgnoreProperties("comment")
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "comment")
+    @JsonIgnoreProperties("project")
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "project")
     private Collection<Comment> comments;
 
 }

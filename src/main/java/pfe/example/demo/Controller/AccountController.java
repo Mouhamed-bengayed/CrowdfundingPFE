@@ -23,4 +23,5 @@ public class AccountController {
     public Account addAccount(@RequestBody @Valid Account A1){
         return  accountService.addAccount(A1);
     }
+
 }
