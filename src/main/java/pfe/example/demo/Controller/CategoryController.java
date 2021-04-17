@@ -7,7 +7,7 @@ import pfe.example.demo.Service.CategoryService;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {

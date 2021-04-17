@@ -16,7 +16,7 @@ public class Account implements Serializable {
     private String prenom;
     private String email;
     private String password;
-    private String CPassword;
+    private Number number;
     @ManyToOne
     private Utilisateur utilisateur;
     private boolean isValid;

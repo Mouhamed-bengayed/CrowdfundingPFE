@@ -8,6 +8,7 @@ import pfe.example.demo.Service.CommentService;
 
 import javax.validation.Valid;
 import java.util.List;
+@CrossOrigin
 @RequestMapping("/api/comment")
 @RestController
 public class CommentController {

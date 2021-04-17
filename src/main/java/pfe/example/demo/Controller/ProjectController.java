@@ -2,12 +2,14 @@ package pfe.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pfe.example.demo.Entites.Category;
 import pfe.example.demo.Entites.Project;
 import pfe.example.demo.Service.ProjectService;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
@@ -30,8 +32,13 @@ public class ProjectController {
         return projectService.getAllProject();
     }
 
-    @GetMapping("/get-project-ByNom/{idNom}")
-    public Project getProjectByNom(@PathVariable("idNom") String idNom) {
-        return projectService.getProjectByNom(idNom);
+    @GetMapping("/get-project-ByNom/{nomProject}")
+    public Project getProjectByNom(@PathVariable("nomProject") String nomProject) {
+        return projectService.getProjectByNom(nomProject);
     }
+    @GetMapping("/get-project-ByNom/{nomCategory}")
+    public List<Project> getProjectByNom(@PathVariable("nomCategory") Category nomCategory) {
+        return projectService.getAllProjectByCategory(nomCategory);
+    }
+
 }

@@ -14,8 +14,8 @@ public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String nom;
-    private String descrption;
+    private String nomProject;
+    private String description;
     private Date dateDecreation;
     @ManyToOne
     private Category category;

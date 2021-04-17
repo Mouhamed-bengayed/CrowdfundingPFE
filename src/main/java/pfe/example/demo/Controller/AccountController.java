@@ -7,6 +7,7 @@ import pfe.example.demo.Service.AccountService;
 
 import javax.validation.Valid;
 import java.util.List;
+@CrossOrigin
 
 @RequestMapping("/api/Account")
 @RestController

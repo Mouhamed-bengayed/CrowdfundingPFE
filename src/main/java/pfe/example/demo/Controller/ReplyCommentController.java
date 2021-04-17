@@ -9,6 +9,7 @@ import pfe.example.demo.Service.ReplyCommentService;
 
 import javax.validation.Valid;
 
+@CrossOrigin
 
 @RestController
 @RequestMapping("/api/ReplyComment")

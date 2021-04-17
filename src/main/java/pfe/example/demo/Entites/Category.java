@@ -19,7 +19,7 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL ,mappedBy = "category")
+    @OneToMany(fetch = FetchType.EAGER , cascade=CascadeType.ALL ,mappedBy = "category")
     @JsonIgnoreProperties("category")
     private Collection<Project> project;
 

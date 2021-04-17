@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pfe.example.demo.Dao.ProjectRepository;
+import pfe.example.demo.Entites.Category;
 import pfe.example.demo.Entites.Project;
 import java.util.List;
 
@@ -28,7 +29,10 @@ public class ProjectService {
         projectRepository.delete(project);
         return ResponseEntity.ok().build();
     }
-    public Project getProjectByNom(String nom){
-      return   projectRepository.findProjectByNom(nom);
+    public Project getProjectByNom(String nomProject){
+      return   projectRepository.findByNomProject(nomProject);
+    }
+    public  List<Project> getAllProjectByCategory(Category category){
+        return projectRepository.findByCategory(category);
     }
 }
