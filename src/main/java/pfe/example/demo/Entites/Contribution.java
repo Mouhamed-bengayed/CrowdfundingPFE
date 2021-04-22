@@ -11,6 +11,7 @@ public class Contribution {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Double montantDeInvestissement;
+    private String type;
     private Date dateDeContribution;
     @ManyToOne
     private Project project;

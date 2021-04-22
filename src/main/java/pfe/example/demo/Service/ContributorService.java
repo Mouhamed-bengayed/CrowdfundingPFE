@@ -16,17 +16,16 @@ public class ContributorService {
     @Autowired
     ListBlackRepository listBlackRepository;
 
-    public void activateContributor(Long id) {
-        Contributor contributor = (Contributor) contributorRepository.getOne(id);
+    public void activateContributor(Long idContributeur) {
+        Contributor contributor = (Contributor) contributorRepository.getOne(idContributeur);
         ListBlack listBlack = listBlackRepository.findByContributor(contributor);
-        this.listBlackRepository.deleteById(id);
+        this.listBlackRepository.delete(listBlack);
     }
 
     public void blockedContributor(Long id) {
         Contributor contributor = contributorRepository.getOne(id);
         ListBlack listBlack = new ListBlack();
-        listBlack.setContributor((Collection<Contributor>) contributor);
+        listBlack.setContributor(contributor);
         listBlackRepository.save(listBlack);
-
     }
 }

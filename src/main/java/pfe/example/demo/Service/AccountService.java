@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import pfe.example.demo.Dao.AccountRepository;
 import pfe.example.demo.Entites.Account;
+import pfe.example.demo.dtos.LoginRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,8 +22,7 @@ public class AccountService {
 
     public Account addAccount(Account a1){
         a1.setValid(false);
-
-   return   accountRepository.save(a1);
+        return   accountRepository.save(a1);
     }
 
 
@@ -43,4 +43,12 @@ public class AccountService {
         }
     }
 
+    public Account signin(LoginRequest login) {
+        Optional<Account> account=accountRepository.findByEmailAndPassword(login.getEmail(),login.getPassword());
+        if(account.isPresent()){
+            return account.get();
+        }else{
+            return null;
+        }
+    }
 }

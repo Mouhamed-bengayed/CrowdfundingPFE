@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pfe.example.demo.Entites.Account;
 import pfe.example.demo.Service.AccountService;
+import pfe.example.demo.dtos.LoginRequest;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -24,5 +25,16 @@ public class AccountController {
     public Account addAccount(@RequestBody @Valid Account A1){
         return  accountService.addAccount(A1);
     }
+
+    @PutMapping("/validate-account/{idAccount}")
+    public void validInscription(@PathVariable("idAccount") Long idAccount) {
+         accountService.validInscription(idAccount);
+    }
+
+    @PostMapping("/signin")
+    public Account signin(@RequestBody @Valid LoginRequest login){
+        return  accountService.signin(login);
+    }
+
 
 }

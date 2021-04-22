@@ -17,6 +17,9 @@ public class Project implements Serializable {
     private String nomProject;
     private String description;
     private Date dateDecreation;
+    private double prix;
+    private Long likes;
+    private boolean isActif;
     @ManyToOne
     private Category category;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")

@@ -27,18 +27,40 @@ public class ProjectController {
        return projectService.addProject(p1);
     }
 
-    @GetMapping("/get-AllProject")
+    @GetMapping("/get-llProject")
     public List<Project> getAllProject() {
         return projectService.getAllProject();
     }
 
-    @GetMapping("/get-project-ByNom/{nomProject}")
-    public Project getProjectByNom(@PathVariable("nomProject") String nomProject) {
+    @GetMapping("/get-project-by-nom/{nomProject}")
+    public List<Project> getProjectByNom(@PathVariable("nomProject") String nomProject) {
         return projectService.getProjectByNom(nomProject);
     }
-    @GetMapping("/get-project-ByNom/{nomCategory}")
-    public List<Project> getProjectByNom(@PathVariable("nomCategory") Category nomCategory) {
-        return projectService.getAllProjectByCategory(nomCategory);
+    @GetMapping("/get-project-by-id/{id}")
+    public Project getProjectById(@PathVariable("id") Long id) {
+        return projectService.getProjectById(id);
+    }
+    @GetMapping("/get-project-by-category/{idCategory}")
+    public List<Project> getProjectByNomCategory(@PathVariable("idCategory") Long idCategory) {
+        return projectService.getAllProjectByCategory(idCategory);
+    }
+    @GetMapping("/get-project-by-porter/{idPorter}")
+    public List<Project> getProjectByPorter(@PathVariable("idPorter") Long idPorter) {
+        return projectService.getAllProjectByPorter(idPorter);
+    }
+    @PutMapping("/active-project/{idProject}")
+    public void activePrject(@PathVariable(name = "idProject") Long idProject) {
+        projectService.activateProject(idProject);
+    }
+
+    @PutMapping("/bloque-project/{idProject}")
+    public void bloqueProject(@PathVariable(name = "idProject") Long idProject){
+        projectService.blockedProject(idProject);
+    }
+
+    @GetMapping("/get-actif-project")
+    public List<Project> getProjectByNomCategory() {
+        return projectService.getActifProject();
     }
 
 }
