@@ -16,9 +16,8 @@ public class ListBlack {
     @OneToMany(fetch = FetchType.LAZY , cascade= CascadeType.ALL,mappedBy = "listBlack")
     @JsonIgnoreProperties("listBlack")
     private Collection<Porter> porter;
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "listBlack")
-    @JsonIgnoreProperties("listBlack")
-    private Collection<Contributor> contributor;
+    @ManyToOne
+    private Contributor contributor;
 
 
 }

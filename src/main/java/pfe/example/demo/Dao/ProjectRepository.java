@@ -11,6 +11,6 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Project,Long> {
 
     Project findByNomProject(String nom);
-List<Project> findByCategory(Category category);
+    List<Project> findByCategory(Category category);
 
 }

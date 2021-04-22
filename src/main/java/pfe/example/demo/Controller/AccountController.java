@@ -25,4 +25,9 @@ public class AccountController {
         return  accountService.addAccount(A1);
     }
 
+    @GetMapping("/validate-account/{idAccount}")
+    public void validInscription(@PathVariable("idAccount") Long idAccount) {
+         accountService.validInscription(idAccount);
+    }
+
 }
