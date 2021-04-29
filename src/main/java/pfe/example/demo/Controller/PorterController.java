@@ -1,7 +1,6 @@
 package pfe.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pfe.example.demo.Service.PorterService;
 @CrossOrigin
@@ -19,4 +18,6 @@ PorterService porterService;
     public void blockedPorter(@PathVariable(name = "idPorter") Long idPorter){
         porterService.blockedPorter(idPorter);
     }
+
+
 }

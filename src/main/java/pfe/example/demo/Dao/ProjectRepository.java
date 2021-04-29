@@ -12,7 +12,7 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Project,Long> {
 
    List<Project> findByNomProject(String nom);
-    List<Project> findByCategory(Category category);
+    List<Project> findByCategoryAndIsActif(Category category,boolean actif);
     List<Project> findByPorter(Porter porter);
 
     List<Project> findByIsActif(boolean actif);

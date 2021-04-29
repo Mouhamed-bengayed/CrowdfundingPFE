@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import pfe.example.demo.Entites.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface ListBlackRepository extends JpaRepository<ListBlack,Long> {
@@ -15,5 +16,8 @@ public interface ListBlackRepository extends JpaRepository<ListBlack,Long> {
     ListBlack findByContributor(Contributor contributor);
 
 
+    List<ListBlack> findByContributorNotNull();
+
+    List<ListBlack> findByPorterNotNull();
 }
 

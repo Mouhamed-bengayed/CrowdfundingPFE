@@ -56,10 +56,10 @@ public class ProjectService {
        return   projectRepository.findByIsActif(true);
    }
 
-    public  List<Project> getAllProjectByCategory(Long idCategory){
+    public  List<Project> getAllActiveProjectByCategory(Long idCategory){
         Optional<Category> category=this.categoryRepository.findById(idCategory);
         if(category.isPresent()){
-            return projectRepository.findByCategory(category.get());
+            return projectRepository.findByCategoryAndIsActif(category.get(),true);
         }
         return new ArrayList<>();
     }

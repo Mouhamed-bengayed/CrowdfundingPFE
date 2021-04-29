@@ -1,6 +1,7 @@
 package pfe.example.demo.Entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Comment implements Serializable {
     @ManyToOne
     private Contributor contributor;
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Project project;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "comment")
     @JsonIgnoreProperties("comment")

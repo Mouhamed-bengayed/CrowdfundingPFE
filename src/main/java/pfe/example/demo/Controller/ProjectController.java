@@ -40,9 +40,9 @@ public class ProjectController {
     public Project getProjectById(@PathVariable("id") Long id) {
         return projectService.getProjectById(id);
     }
-    @GetMapping("/get-project-by-category/{idCategory}")
-    public List<Project> getProjectByNomCategory(@PathVariable("idCategory") Long idCategory) {
-        return projectService.getAllProjectByCategory(idCategory);
+    @GetMapping("/get-active-project-by-category/{idCategory}")
+    public List<Project> getActiveProjectByCategory(@PathVariable("idCategory") Long idCategory) {
+        return projectService.getAllActiveProjectByCategory(idCategory);
     }
     @GetMapping("/get-project-by-porter/{idPorter}")
     public List<Project> getProjectByPorter(@PathVariable("idPorter") Long idPorter) {
