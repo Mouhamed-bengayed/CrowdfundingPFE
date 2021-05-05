@@ -1,6 +1,7 @@
 package pfe.example.demo.Entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,10 +19,10 @@ public class Project implements Serializable {
     private String description;
     private Date dateDecreation;
     private double prix;
-    private Long likes;
     private boolean isActif;
     @ManyToOne
     private Category category;
+    @JsonIgnoreProperties("project")
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
     private Collection<Vote> votes;
     @OneToMany( fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
@@ -32,5 +33,9 @@ public class Project implements Serializable {
     @JsonIgnoreProperties("project")
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "project")
     private Collection<Comment> comments;
+
+    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "project")
+
+    private Collection<Contributor> contributor;
 
 }

@@ -2,19 +2,19 @@ package pfe.example.demo.Entites;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
 public class Vote {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String valeur;
+    private Long valeur;
     @ManyToOne
     Project project;
     @ManyToOne
-    Contributor contributor;
+   Account account;
+
+
 
 }

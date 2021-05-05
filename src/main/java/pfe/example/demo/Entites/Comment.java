@@ -21,7 +21,7 @@ public class Comment implements Serializable {
     @ManyToOne
     private Contributor contributor;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Project project;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "comment")
     @JsonIgnoreProperties("comment")

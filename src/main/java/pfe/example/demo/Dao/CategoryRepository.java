@@ -6,5 +6,5 @@ import pfe.example.demo.Entites.Category;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category,Long> {
-    List<Category> findByNomContaining(String category);
+
 }

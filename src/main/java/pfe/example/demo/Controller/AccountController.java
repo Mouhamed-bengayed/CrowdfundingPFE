@@ -3,6 +3,7 @@ package pfe.example.demo.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pfe.example.demo.Entites.Account;
+import pfe.example.demo.Entites.Vote;
 import pfe.example.demo.Service.AccountService;
 import pfe.example.demo.dtos.LoginRequest;
 
@@ -19,6 +20,14 @@ public class AccountController {
     public List<Account> ListAccount() {
         return accountService.getAllAccount();
     }
+
+    @GetMapping("/list-vote-account")
+    public List<Vote> getAllVoteByAccount(@PathVariable("idAccount") Long idAccount) {
+        return accountService.getAllVoteByAccount(idAccount);
+    }
+
+
+
     @DeleteMapping("/delete-account/{idAccount}")
     public void deleteAccount(@PathVariable("idAccount") Long idAccount) { accountService.deleteAccount(idAccount); }
     @PostMapping("/add-account")

@@ -1,3 +1,4 @@
+/*
 package pfe.example.demo.Entites;
 
 
@@ -19,10 +20,9 @@ public abstract class Utilisateur implements Serializable {
     private String prenom;
     private String email;
     private String password;
-    private String CPassword;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "utilisateur")
     @JsonIgnoreProperties("utilisateur")
-    private Collection<Account> accountRepositories;
-    public Utilisateur() {
-    }
+    private Collection<Account> account;
+
 }
+*/

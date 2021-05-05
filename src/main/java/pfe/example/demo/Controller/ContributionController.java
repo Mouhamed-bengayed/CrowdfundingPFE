@@ -6,6 +6,7 @@ import pfe.example.demo.Entites.Account;
 import pfe.example.demo.Entites.Contribution;
 import pfe.example.demo.Service.ContributionService;
 
+import javax.validation.Path;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -19,11 +20,11 @@ public class ContributionController {
     ContributionService contributionService;
 
     @GetMapping("/list-contribution")
-    public List<Contribution> ListAccount() {
+    public List<Contribution> Listcontribution() {
         return contributionService.getAllContribution();
     }
-    @PostMapping("/add-contribution")
-    public Contribution addAccount(@RequestBody @Valid Contribution A1){
-        return  contributionService.addContribution(A1);
+    @PostMapping("/add-contribution/{{idAccount}}")
+    public Contribution addcontribution(@RequestBody @Valid Contribution c1,@PathVariable(name = "idAccount") Long idAccount){
+        return  contributionService.addContribution(c1,idAccount);
     }
 }

@@ -2,14 +2,8 @@ package pfe.example.demo.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import pfe.example.demo.Dao.CategoryRepository;
-import pfe.example.demo.Dao.ListBlackRepository;
-import pfe.example.demo.Dao.PorterRepository;
-import pfe.example.demo.Dao.ProjectRepository;
-import pfe.example.demo.Entites.Category;
-import pfe.example.demo.Entites.ListBlack;
-import pfe.example.demo.Entites.Porter;
-import pfe.example.demo.Entites.Project;
+import pfe.example.demo.Dao.*;
+import pfe.example.demo.Entites.*;
 
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
@@ -27,16 +21,45 @@ public class ProjectService {
     ListBlackRepository listBlackRepository;
     @Autowired
     PorterRepository porterRepository;
+    @Autowired
+    ContributorRepository contributorRepository;
+    @Autowired
+    VoterRepository voterRepository;
+    @Autowired
+    AccountRepository accountRepository;
 
     public List<Project> getAllProject() {
         return projectRepository.findAll();
     }
 
-
     public Project addProject(Project p1) {
         p1.setActif(false);
         return projectRepository.save(p1);
     }
+
+
+    public Project addProject(Project p1,Long idAccount )
+    {   Optional<Account> account=accountRepository.findById(idAccount);
+        p1.setActif(false);
+        if(account.isPresent()){
+            Porter  porter= porterRepository.findByAccount(account.get());
+            if(porter == null){
+                porter= new Porter();
+                porter.setAccount(account.get());
+                porter=porterRepository.save(porter);
+            }
+            p1.setPorter(porter);
+            return projectRepository.save(p1) ;
+        }
+        return null;
+    }
+
+
+
+
+
+
+
 
 
     public Project getProjectById(Long id) {
@@ -71,21 +94,41 @@ public class ProjectService {
         return new ArrayList<>();
     }
 
-
-
-
     public void blockedProject(Long id) {
         Project project = (Project) getProjectById(id) ;
         project.setActif(false);
         projectRepository.save(project);
     }
-
     public void activateProject(Long id) {
         Project project = (Project) getProjectById(id) ;
         project.setActif(true);
         projectRepository.save(project);
 
     }
+    public void voterProject(Long idProject,Long idAccount){
+        Optional<Project> project=projectRepository.findById(idProject);
+        Optional<Account> account=accountRepository.findById(idAccount);
+        if(project.isPresent() && account.isPresent()){
+            Vote vote=new Vote();
+            vote.setAccount(account.get());
+            vote.setProject(project.get());
+            voterRepository.save(vote);
+        }
+    }
+
+    public void supprimerVoteProject(Long idProject,Long idAccount){
+        Optional<Project> project=projectRepository.findById(idProject);
+        Optional<Account> account=accountRepository.findById(idAccount);
+        if(project.isPresent() && account.isPresent()){
+            Vote vote=voterRepository.findByAccountAndProject(account.get(),project.get());
+            if(vote != null) {
+                voterRepository.delete(vote);
+            }
+        }
+    }
+
+
+
 
 
 

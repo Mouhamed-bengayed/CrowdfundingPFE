@@ -11,21 +11,21 @@ import java.util.Collection;
 @Entity
 @DiscriminatorValue("contributor")
 @Data
-public class Contributor extends Utilisateur {
+public class Contributor extends Account {
 
 
     @ManyToOne
     private ListBlack listBlack;
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "contributor")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "contributor")
     @JsonIgnoreProperties("contributor")
     private Collection<Contribution> contributions;
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "contributor")
-    @JsonIgnoreProperties("contributor")
-    private Collection<Vote> votes;
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "contributor")
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "contributor")
     @JsonIgnoreProperties("contributor")
     private Collection<Comment> comments;
-
-
+     @ManyToOne
+    private Account account;
+     @ManyToOne
+     private Project project;
 
 }
