@@ -51,6 +51,11 @@ public class ProjectController {
     public List<Project> getProjectByPorter(@PathVariable("idPorter") Long idPorter) {
         return projectService.getAllProjectByPorter(idPorter);
     }
+    @GetMapping("/get-project-by-account/{idAccount}")
+    public List<Project> getProjectByAccount(@PathVariable("idAccount") Long idAccount) {
+        return projectService.getAllProjectByAccount(idAccount);
+    }
+
     @PutMapping("/active-project/{idProject}")
     public void activePrject(@PathVariable(name = "idProject") Long idProject) {
         projectService.activateProject(idProject);
@@ -71,7 +76,7 @@ public class ProjectController {
         projectService.voterProject(idProject,idAccount);
     }
 
-    @PutMapping("/annuler-voter/{idProject}/{idAccount}")
+    @DeleteMapping("/annuler-voter/{idProject}/{idAccount}")
     public void supprimerVoteProject(@PathVariable(name = "idProject") Long idProject,@PathVariable(name = "idAccount") Long idAccount) {
         projectService.supprimerVoteProject(idProject,idAccount);
     }

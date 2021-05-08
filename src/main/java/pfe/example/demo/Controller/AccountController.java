@@ -21,10 +21,11 @@ public class AccountController {
         return accountService.getAllAccount();
     }
 
-    @GetMapping("/list-vote-account")
-    public List<Vote> getAllVoteByAccount(@PathVariable("idAccount") Long idAccount) {
-        return accountService.getAllVoteByAccount(idAccount);
+    @GetMapping("/list-vote-project/{idProject}")
+    public List<Vote> getAllVoteByProject(@PathVariable("idProject") Long idProject) {
+        return accountService.getAllVoteByProject(idProject);
     }
+
 
 
 

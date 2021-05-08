@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.AbstractPersistable_;
 import org.springframework.stereotype.Service;
 
-import pfe.example.demo.Dao.AccountRepository;
-import pfe.example.demo.Dao.ContributorRepository;
-import pfe.example.demo.Dao.PorterRepository;
-import pfe.example.demo.Dao.VoterRepository;
+import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.*;
 import pfe.example.demo.dtos.LoginRequest;
 import pfe.example.demo.dtos.UserType;
@@ -27,15 +24,17 @@ public class AccountService {
     PorterRepository porterRepository;
 @Autowired
     VoterRepository voterRepository;
+@Autowired
+    ProjectRepository projectRepository;
     public List<Account> getAllAccount(){
         return accountRepository.findAll();
     }
 
 
-    public List<Vote> getAllVoteByAccount(Long idAccount) {
-        Optional<Account> account=accountRepository.findById(idAccount);
-        if(account.isPresent()){
-            return voterRepository.findAllByIdAccount(account.get());
+    public List<Vote> getAllVoteByProject(Long idProject) {
+        Optional<Project> project=projectRepository.findById(idProject);
+        if(project.isPresent()){
+            return voterRepository.findByProject(project.get());
         }else{
             return new ArrayList<>();
         }

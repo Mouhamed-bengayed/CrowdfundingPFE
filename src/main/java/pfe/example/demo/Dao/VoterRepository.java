@@ -16,5 +16,6 @@ public interface VoterRepository extends JpaRepository<Vote,Long> {
 
     List<Vote> findByProject(Project project);
 
-    List<Vote> findAllByIdAccount(Account idAccount);
+
+    List<Vote> findByAccount(Project account);
 }

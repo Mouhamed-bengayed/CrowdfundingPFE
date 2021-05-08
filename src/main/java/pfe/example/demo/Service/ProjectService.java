@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.*;
+import pfe.example.demo.dtos.ProjectState;
 
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class ProjectService {
     public Project addProject(Project p1,Long idAccount )
     {   Optional<Account> account=accountRepository.findById(idAccount);
         p1.setActif(false);
+        p1.setState(ProjectState.ETATINITIAL);
         if(account.isPresent()){
             Porter  porter= porterRepository.findByAccount(account.get());
             if(porter == null){
@@ -53,14 +55,6 @@ public class ProjectService {
         }
         return null;
     }
-
-
-
-
-
-
-
-
 
     public Project getProjectById(Long id) {
         return projectRepository.findById(id).orElseThrow();
@@ -90,6 +84,14 @@ public class ProjectService {
         Optional<Porter> porter=this.porterRepository.findById(idPorter);
         if(porter.isPresent()){
             return projectRepository.findByPorter(porter.get());
+        }
+        return new ArrayList<>();
+    }
+
+    public  List<Project> getAllProjectByAccount(Long idAccount){
+        Optional<Account> account=this.accountRepository.findById(idAccount);
+        if(account.isPresent()){
+            return projectRepository.findByAccount(account.get());
         }
         return new ArrayList<>();
     }
@@ -126,9 +128,6 @@ public class ProjectService {
             }
         }
     }
-
-
-
 
 
 
