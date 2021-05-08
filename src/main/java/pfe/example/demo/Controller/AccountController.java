@@ -20,15 +20,10 @@ public class AccountController {
     public List<Account> ListAccount() {
         return accountService.getAllAccount();
     }
-
     @GetMapping("/list-vote-project/{idProject}")
     public List<Vote> getAllVoteByProject(@PathVariable("idProject") Long idProject) {
         return accountService.getAllVoteByProject(idProject);
     }
-
-
-
-
     @DeleteMapping("/delete-account/{idAccount}")
     public void deleteAccount(@PathVariable("idAccount") Long idAccount) { accountService.deleteAccount(idAccount); }
     @PostMapping("/add-account")
@@ -40,11 +35,8 @@ public class AccountController {
     public void validInscription(@PathVariable("idAccount") Long idAccount) {
          accountService.validInscription(idAccount);
     }
-
     @PostMapping("/signin")
     public Account signin(@RequestBody @Valid LoginRequest login){
         return  accountService.signin(login);
     }
-
-
 }
