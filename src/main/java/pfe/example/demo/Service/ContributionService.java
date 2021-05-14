@@ -29,11 +29,13 @@ public class ContributionService {
 
     public List<Contribution> getAllContribution() { return contributionRepository.findAll(); }
 
-    public Contribution addContribution(Contribution c1,Long idAccount )
+    public Contribution addContribution(Contribution c1,Long idAccount,Long idProject )
     {   Optional<Account> account=accountRepository.findById(idAccount);
-       if(account.isPresent()){
+        Optional<Project> project1=projectRepository.findById(idProject);
+       if(account.isPresent() && project1.isPresent()){
+           c1.setProject(project1.get());
         Contributor  contributor= contributorRepository.findByAccount(account.get());
-        if(contributor == null && c1.getProject().getState() != ProjectState.ETATFINAL){
+        if(contributor == null && project1.get().getState() != ProjectState.ETATFINAL){
             contributor = new Contributor();
             contributor.setAccount(account.get());
             contributor=contributorRepository.save(contributor);

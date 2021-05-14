@@ -91,7 +91,10 @@ public class ProjectService {
     public  List<Project> getAllProjectByAccount(Long idAccount){
         Optional<Account> account=this.accountRepository.findById(idAccount);
         if(account.isPresent()){
-            return projectRepository.findByAccount(account.get());
+            Porter porter=porterRepository.findByAccount(account.get());
+            if(porter != null) {
+                return projectRepository.findByPorter(porter);
+            }
         }
         return new ArrayList<>();
     }
@@ -128,6 +131,7 @@ public class ProjectService {
             }
         }
     }
+
 
 
 

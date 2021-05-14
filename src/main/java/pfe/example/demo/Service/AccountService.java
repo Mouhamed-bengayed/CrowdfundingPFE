@@ -41,15 +41,10 @@ public class AccountService {
     }
 
 
-
-
-
-
-
     public Account addAccount(Account a1){
         a1.setValid(false);
         Account savedAccount=   accountRepository.save(a1);
-        if(savedAccount.getType() == UserType.CONTRIBUTEUR){
+      /*  if(savedAccount.getType() == UserType.CONTRIBUTEUR){
             Contributor contributor=new Contributor();
             contributor.setAccount(savedAccount);
             contributorRepository.save(contributor);
@@ -58,6 +53,8 @@ public class AccountService {
             porter.setAccount(savedAccount);
             porterRepository.save(porter);
         }
+
+       */
         return savedAccount;
     }
 
@@ -83,7 +80,8 @@ public class AccountService {
         Optional<Account> account=accountRepository.findByEmailAndPassword(login.getEmail(),login.getPassword());
         if(account.isPresent()){
             return account.get();
-        }else{
+        }
+        else{
             return null;
         }
     }

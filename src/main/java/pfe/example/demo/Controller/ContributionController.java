@@ -23,8 +23,8 @@ public class ContributionController {
     public List<Contribution> Listcontribution() {
         return contributionService.getAllContribution();
     }
-    @PostMapping("/add-contribution/{{idAccount}}")
-    public Contribution addcontribution(@RequestBody @Valid Contribution c1,@PathVariable(name = "idAccount") Long idAccount){
-        return  contributionService.addContribution(c1,idAccount);
+    @PostMapping("/add-contribution/{idAccount}/{idProject}")
+    public Contribution addcontribution(@RequestBody @Valid Contribution c1,@PathVariable(name = "idAccount") Long idAccount, @PathVariable(name = "idProject") Long idProject){
+        return  contributionService.addContribution(c1,idAccount,idProject);
     }
 }

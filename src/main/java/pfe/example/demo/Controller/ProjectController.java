@@ -67,7 +67,7 @@ public class ProjectController {
     }
 
     @GetMapping("/get-actif-project")
-    public List<Project> getProjectByNomCategory() {
+    public List<Project> getActiveProject() {
         return projectService.getActifProject();
     }
 

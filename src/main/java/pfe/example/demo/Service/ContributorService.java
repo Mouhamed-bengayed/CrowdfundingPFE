@@ -7,6 +7,7 @@ import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.*;
 
 import java.util.Collection;
+import java.util.List;
 
 
 @Service
@@ -27,5 +28,9 @@ public class ContributorService {
         ListBlack listBlack = new ListBlack();
         listBlack.setContributor(contributor);
         listBlackRepository.save(listBlack);
+    }
+
+    public List<Contributor> findAll() {
+        return contributorRepository.findAll();
     }
 }

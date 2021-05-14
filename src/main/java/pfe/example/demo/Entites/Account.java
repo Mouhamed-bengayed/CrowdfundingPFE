@@ -2,14 +2,9 @@ package pfe.example.demo.Entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import pfe.example.demo.dtos.ProjectState;
 import pfe.example.demo.dtos.UserType;
-
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,6 +17,9 @@ public class Account implements Serializable {
     private String email;
     private String password;
     private Number number;
+    private String address;
+    private String bio;
+    private String city;
     private UserType type;
     private boolean isValid;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "account")

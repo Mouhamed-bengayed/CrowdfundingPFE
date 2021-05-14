@@ -8,6 +8,7 @@ import pfe.example.demo.Entites.ListBlack;
 import pfe.example.demo.Entites.Porter;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class PorterService {
@@ -30,4 +31,7 @@ ListBlackRepository listBlackRepository;
 
     }
 
+    public List<Porter> getAllPorter() {
+       return porterRepository.findAll();
+    }
 }

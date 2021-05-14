@@ -11,8 +11,11 @@ import java.util.Collection;
 @Entity
 @DiscriminatorValue("contributor")
 @Data
-public class Contributor extends Account {
+public class Contributor {
 
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @ManyToOne
     private ListBlack listBlack;
@@ -24,6 +27,7 @@ public class Contributor extends Account {
     @JsonIgnoreProperties("contributor")
     private Collection<Comment> comments;
      @ManyToOne
+     @JsonIgnoreProperties({"vote"})
     private Account account;
      @ManyToOne
      private Project project;

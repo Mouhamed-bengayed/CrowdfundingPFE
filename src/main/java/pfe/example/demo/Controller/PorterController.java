@@ -2,7 +2,11 @@ package pfe.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pfe.example.demo.Entites.Porter;
 import pfe.example.demo.Service.PorterService;
+
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/porter")
@@ -19,5 +23,9 @@ PorterService porterService;
         porterService.blockedPorter(idPorter);
     }
 
+   @GetMapping("/find-all")
+    public List<Porter> getAll(){
+      return porterService.getAllPorter();
+   }
 
 }

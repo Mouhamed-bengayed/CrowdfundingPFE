@@ -36,12 +36,12 @@ public class Project implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Contribution> contribution;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Porter porter;
     @JsonIgnoreProperties("project")
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "project")
     private Collection<Comment> comments;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  //  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "project")
     private Collection<Contributor> contributor;
 
