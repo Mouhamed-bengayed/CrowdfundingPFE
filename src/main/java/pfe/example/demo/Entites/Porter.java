@@ -19,7 +19,7 @@ public class Porter {
     private ListBlack listBlack;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "porter")
     @JsonIgnoreProperties("porter")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Project> project;
     @ManyToOne
     @JsonIgnoreProperties({"vote"})

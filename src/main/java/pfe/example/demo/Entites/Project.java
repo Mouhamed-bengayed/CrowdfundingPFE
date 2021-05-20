@@ -19,6 +19,8 @@ public class Project implements Serializable {
     private String nomProject;
     private String description;
     private Date dateDecreation;
+    private String email;
+    private Long numero;
     private double prix;
     private double prixCourant;
     private ProjectState state;

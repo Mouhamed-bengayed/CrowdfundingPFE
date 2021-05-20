@@ -5,6 +5,7 @@ import lombok.Data;
 import pfe.example.demo.dtos.UserType;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,10 +16,10 @@ public class Account implements Serializable {
     private String nom;
     private String prenom;
     private String email;
+//    private Date dateDeNaissance;
     private String password;
     private Number number;
     private String address;
-    private String bio;
     private String city;
     private UserType type;
     private boolean isValid;
