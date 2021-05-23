@@ -16,13 +16,14 @@ public class Account implements Serializable {
     private String nom;
     private String prenom;
     private String email;
-//    private Date dateDeNaissance;
+   private Date dateDeNaissance;
     private String password;
+    private boolean blocked;
     private Number number;
     private String address;
     private String city;
     private UserType type;
-    private boolean isValid;
+    private boolean valid;
     @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL,mappedBy = "account")
     @JsonIgnoreProperties("account")
     private List<Vote> vote;

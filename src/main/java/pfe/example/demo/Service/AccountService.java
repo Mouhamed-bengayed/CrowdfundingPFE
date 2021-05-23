@@ -22,10 +22,13 @@ public class AccountService {
     ContributorRepository contributorRepository;
     @Autowired
     PorterRepository porterRepository;
-@Autowired
+    @Autowired
     VoterRepository voterRepository;
-@Autowired
+    @Autowired
     ProjectRepository projectRepository;
+    @Autowired
+    ListBlackRepository listBlackRepository;
+
     public List<Account> getAllAccount(){
         return accountRepository.findAll();
     }
@@ -44,6 +47,7 @@ public class AccountService {
     public Account addAccount(Account a1){
         a1.setValid(false);
         Account savedAccount=   accountRepository.save(a1);
+
       /*  if(savedAccount.getType() == UserType.CONTRIBUTEUR){
             Contributor contributor=new Contributor();
             contributor.setAccount(savedAccount);
@@ -77,12 +81,17 @@ public class AccountService {
     }
 
     public Account signin(LoginRequest login) {
-        Optional<Account> account=accountRepository.findByEmailAndPassword(login.getEmail(),login.getPassword());
+        Optional<Account> account=accountRepository.findByEmailAndPasswordAndValid(login.getEmail(),login.getPassword(),true);
         if(account.isPresent()){
-            return account.get();
+            Porter porter=porterRepository.findByAccount(account.get());
+            ListBlack listBlack = null;
+            if(porter != null) {
+                 listBlack = listBlackRepository.findByPorter(porter);
+            }
+            if(listBlack == null) {
+                return account.get();
+            }
         }
-        else{
             return null;
-        }
     }
 }

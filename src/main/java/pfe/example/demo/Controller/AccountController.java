@@ -26,6 +26,7 @@ public class AccountController {
     }
     @DeleteMapping("/delete-account/{idAccount}")
     public void deleteAccount(@PathVariable("idAccount") Long idAccount) { accountService.deleteAccount(idAccount); }
+
     @PostMapping("/add-account")
     public Account addAccount(@RequestBody @Valid Account A1){
         return  accountService.addAccount(A1);

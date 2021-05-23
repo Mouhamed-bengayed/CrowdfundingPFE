@@ -35,10 +35,12 @@ public class ContributionService {
        if(account.isPresent() && project1.isPresent()){
            c1.setProject(project1.get());
         Contributor  contributor= contributorRepository.findByAccount(account.get());
-        if(contributor == null && project1.get().getState() != ProjectState.ETATFINAL){
-            contributor = new Contributor();
-            contributor.setAccount(account.get());
-            contributor=contributorRepository.save(contributor);
+        if(project1.get().getState() != ProjectState.ETATFINAL){
+            if(contributor == null) {
+                contributor = new Contributor();
+                contributor.setAccount(account.get());
+                contributor = contributorRepository.save(contributor);
+            }
             Project project=c1.getProject();
             project.setPrixCourant(project.getPrixCourant()+c1.getMontantDeInvestissement());
             if(project.getPrixCourant() >= project.getPrix()){
