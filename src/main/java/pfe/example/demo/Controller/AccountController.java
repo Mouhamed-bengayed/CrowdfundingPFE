@@ -9,6 +9,7 @@ import pfe.example.demo.dtos.LoginRequest;
 
 import javax.validation.Valid;
 import java.util.List;
+
 @CrossOrigin
 
 @RequestMapping("/api/Account")
@@ -16,28 +17,34 @@ import java.util.List;
 public class AccountController {
     @Autowired
     AccountService accountService;
+
     @GetMapping("/list-account")
     public List<Account> ListAccount() {
         return accountService.getAllAccount();
     }
+
     @GetMapping("/list-vote-project/{idProject}")
     public List<Vote> getAllVoteByProject(@PathVariable("idProject") Long idProject) {
         return accountService.getAllVoteByProject(idProject);
     }
+
     @DeleteMapping("/delete-account/{idAccount}")
-    public void deleteAccount(@PathVariable("idAccount") Long idAccount) { accountService.deleteAccount(idAccount); }
+    public void deleteAccount(@PathVariable("idAccount") Long idAccount) {
+        accountService.deleteAccount(idAccount);
+    }
 
     @PostMapping("/add-account")
-    public Account addAccount(@RequestBody @Valid Account A1){
-        return  accountService.addAccount(A1);
+    public Account addAccount(@RequestBody @Valid Account A1) {
+        return accountService.addAccount(A1);
     }
 
     @PutMapping("/validate-account/{idAccount}")
     public void validInscription(@PathVariable("idAccount") Long idAccount) {
-         accountService.validInscription(idAccount);
+        accountService.validInscription(idAccount);
     }
+
     @PostMapping("/signin")
-    public Account signin(@RequestBody @Valid LoginRequest login){
-        return  accountService.signin(login);
+    public Account signin(@RequestBody @Valid LoginRequest login) {
+        return accountService.signin(login);
     }
 }

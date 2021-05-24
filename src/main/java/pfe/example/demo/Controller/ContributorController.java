@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/contributor")
 public class ContributorController {
-@Autowired
-ContributorService contributorService;
+    @Autowired
+    ContributorService contributorService;
 
     @PutMapping("/active-contributor/{idContributor}")
     public void activeContributor(@PathVariable(name = "idContributor") Long idContributor) {
@@ -21,12 +21,12 @@ ContributorService contributorService;
     }
 
     @PutMapping("/bloque-contributor/{idContributor}")
-    public void blockedContributor(@PathVariable(name = "idContributor") Long idContributor){
+    public void blockedContributor(@PathVariable(name = "idContributor") Long idContributor) {
         contributorService.blockedContributor(idContributor);
     }
 
     @GetMapping("/find-all")
-    public List<Contributor> findAll(){
+    public List<Contributor> findAll() {
         return contributorService.findAll();
     }
 

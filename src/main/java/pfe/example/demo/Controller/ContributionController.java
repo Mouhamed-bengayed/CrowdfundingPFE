@@ -16,15 +16,16 @@ import java.util.List;
 @RestController
 public class ContributionController {
 
-@Autowired
+    @Autowired
     ContributionService contributionService;
 
     @GetMapping("/list-contribution")
     public List<Contribution> Listcontribution() {
         return contributionService.getAllContribution();
     }
+
     @PostMapping("/add-contribution/{idAccount}/{idProject}")
-    public Contribution addcontribution(@RequestBody @Valid Contribution c1,@PathVariable(name = "idAccount") Long idAccount, @PathVariable(name = "idProject") Long idProject){
-        return  contributionService.addContribution(c1,idAccount,idProject);
+    public Contribution addcontribution(@RequestBody @Valid Contribution c1, @PathVariable(name = "idAccount") Long idAccount, @PathVariable(name = "idProject") Long idProject) {
+        return contributionService.addContribution(c1, idAccount, idProject);
     }
 }
