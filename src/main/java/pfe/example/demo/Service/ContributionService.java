@@ -6,13 +6,11 @@ import pfe.example.demo.Dao.AccountRepository;
 import pfe.example.demo.Dao.ContributionRepository;
 import pfe.example.demo.Dao.ContributorRepository;
 import pfe.example.demo.Dao.ProjectRepository;
-import pfe.example.demo.Entites.Account;
-import pfe.example.demo.Entites.Contribution;
-import pfe.example.demo.Entites.Contributor;
-import pfe.example.demo.Entites.Project;
+import pfe.example.demo.Entites.*;
 import pfe.example.demo.dtos.ProjectState;
 
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +52,16 @@ public class ContributionService {
         return contributionRepository.save(c1) ;
        }
        return null;
+    }
+    public  List<Contribution> getAllContributionByAccount(Long idAccount){
+        Optional<Account> account=this.accountRepository.findById(idAccount);
+        if(account.isPresent()){
+            Contributor contributor=contributorRepository.findByAccount(account.get());
+            if(contributor != null) {
+                return contributionRepository.findByContributor(contributor);
+            }
+        }
+        return new ArrayList<>();
     }
 
 

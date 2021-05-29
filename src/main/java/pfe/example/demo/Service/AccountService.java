@@ -9,6 +9,7 @@ import pfe.example.demo.Entites.*;
 import pfe.example.demo.dtos.LoginRequest;
 import pfe.example.demo.dtos.UserType;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,8 @@ public class AccountService {
     ProjectRepository projectRepository;
     @Autowired
     ListBlackRepository listBlackRepository;
+    @Autowired
+    MailSenderService mailSenderService;
 
     public List<Account> getAllAccount(){
         return accountRepository.findAll();
@@ -75,8 +78,14 @@ public class AccountService {
         Optional<Account> account=accountRepository.findById(id);
         if(account.isPresent()) {
             Account account1=account.get();
+
             account1.setValid(true);
             this.accountRepository.save(account1);
+            try {
+                this.mailSenderService.send(account.get().getEmail(),"Votre compte a été activé  ","merci pour votre inscription");
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }
     }
 
