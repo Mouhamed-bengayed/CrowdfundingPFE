@@ -1,7 +1,7 @@
 package pfe.example.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.AbstractPersistable_;
+
 import org.springframework.stereotype.Service;
 
 import pfe.example.demo.Dao.*;
@@ -51,17 +51,7 @@ public class AccountService {
         a1.setValid(false);
         Account savedAccount=   accountRepository.save(a1);
 
-      /*  if(savedAccount.getType() == UserType.CONTRIBUTEUR){
-            Contributor contributor=new Contributor();
-            contributor.setAccount(savedAccount);
-            contributorRepository.save(contributor);
-        }else if (savedAccount.getType() == UserType.PORTEUR){
-            Porter porter=new Porter();
-            porter.setAccount(savedAccount);
-            porterRepository.save(porter);
-        }
 
-       */
         return savedAccount;
     }
 
@@ -88,8 +78,8 @@ public class AccountService {
             }
         }
     }
-
-    public Account signin(LoginRequest login) {
+//??
+   public Account signin(LoginRequest login) {
         Optional<Account> account=accountRepository.findByEmailAndPasswordAndValid(login.getEmail(),login.getPassword(),true);
         if(account.isPresent()){
             Porter porter=porterRepository.findByAccount(account.get());

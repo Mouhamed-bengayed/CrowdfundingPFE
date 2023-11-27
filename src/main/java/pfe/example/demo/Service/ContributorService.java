@@ -6,10 +6,11 @@ import org.springframework.stereotype.Service;
 import pfe.example.demo.Dao.*;
 import pfe.example.demo.Entites.*;
 
+import javax.mail.MessagingException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-
+import javax.mail.MessagingException;
 
 @Service
 public class ContributorService {
@@ -20,7 +21,8 @@ public class ContributorService {
     @Autowired
     AccountRepository accountRepository;
 
-
+    @Autowired
+    MailSenderService mailSenderService;
     public void activateContributor(Long id) {
         Optional<Contributor> contributor =  contributorRepository.findById(id);
         if(contributor.isPresent()) {
@@ -48,6 +50,11 @@ public class ContributorService {
             ListBlack listBlack = new ListBlack();
             listBlack.setContributor(contributor.get());
             listBlackRepository.save(listBlack);
+            try {
+                this.mailSenderService.send(account.getEmail(),"Votre compte a été bloquer  ","Attention !");
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }
     }
 

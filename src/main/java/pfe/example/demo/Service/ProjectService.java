@@ -104,22 +104,33 @@ public class ProjectService {
         project.setActif(false);
         projectRepository.save(project);
     }
+
     public void activateProject(Long id) {
         Project project = (Project) getProjectById(id) ;
         project.setActif(true);
         projectRepository.save(project);
 
     }
+/*
     public void voterProject(Long idProject,Long idAccount){
         Optional<Project> project=projectRepository.findById(idProject);
         Optional<Account> account=accountRepository.findById(idAccount);
         if(project.isPresent() && account.isPresent()){
-            Vote vote=new Vote();
-            vote.setAccount(account.get());
-            vote.setProject(project.get());
-            voterRepository.save(vote);
+            Vote vote=voterRepository.findByProject_Id(idProject);
+            List<Account> accounts=accountRepository.findAllAccountByIdVote(vote.getId());
+            Boolean test=true;
+            for (Account acc:accounts
+                 ) {
+                if (acc.equals(account)){
+                    test=false;
+                } }
+            if(test){
+                vote.setValeur(vote.getValeur()+1);
+                vote.setAccount(account.get());
+                voterRepository.save(vote);
+            }
         }
-    }
+    }*/
 
     public void supprimerVoteProject(Long idProject,Long idAccount){
         Optional<Project> project=projectRepository.findById(idProject);

@@ -31,12 +31,14 @@ public class CommentService {
         }
         }
 
+
     public Comment addComment(Comment c1) {return commentRepository.save(c1); }
 
     public Comment deleteComment(Long id){
         Optional<Comment> comment = commentRepository.findById(id);
         if(comment.isPresent()){
             return comment.get();
+            //commentRepository
         }else {
             return null;
         }

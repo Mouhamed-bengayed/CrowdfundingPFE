@@ -11,7 +11,7 @@ public class Vote {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long valeur;
-    @ManyToOne
+   @OneToOne
     Project project;
     @ManyToOne
    Account account;

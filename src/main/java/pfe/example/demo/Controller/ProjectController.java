@@ -70,11 +70,11 @@ public class ProjectController {
     public List<Project> getActiveProject() {
         return projectService.getActifProject();
     }
-
+/*
     @PutMapping("/voter/{idProject}/{idAccount}")
     public void voterPrject(@PathVariable(name = "idProject") Long idProject,@PathVariable(name = "idAccount") Long idAccount) {
         projectService.voterProject(idProject,idAccount);
-    }
+    }*/
 
     @DeleteMapping("/annuler-voter/{idProject}/{idAccount}")
     public void supprimerVoteProject(@PathVariable(name = "idProject") Long idProject,@PathVariable(name = "idAccount") Long idAccount) {

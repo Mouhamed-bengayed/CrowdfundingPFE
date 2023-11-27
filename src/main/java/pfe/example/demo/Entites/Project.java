@@ -29,10 +29,13 @@ public class Project implements Serializable {
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Category category;
-    @JsonIgnoreProperties("project")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
-    private Collection<Vote> votes;
+
+//    @JsonIgnoreProperties("project")
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @OneToMany(fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
+    @OneToOne
+    private Vote votes;
+
     @OneToMany( fetch = FetchType.LAZY , cascade=CascadeType.ALL, mappedBy = "project")
     @JsonIgnoreProperties("project")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

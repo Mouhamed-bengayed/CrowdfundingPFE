@@ -12,10 +12,12 @@ public interface VoterRepository extends JpaRepository<Vote,Long> {
 
     Vote findByAccountAndProject(Account account, Project project);
 
+    Vote findByProject_Id(Long project);
+
 
 
     List<Vote> findByProject(Project project);
 
 
-    List<Vote> findByAccount(Project account);
+
 }
